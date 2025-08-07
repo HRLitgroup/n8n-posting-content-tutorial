@@ -1,82 +1,175 @@
-# Get Facebook API Access Token for N8N
+# Connect Facebook to N8N
 
-## Overview
+## 🎯 What Are We Setting Up?
 
-This guide provides step-by-step instructions for obtaining Facebook API access tokens that can be used in N8N workflows for Facebook marketing, social media automation, and business page management.
+**Facebook** is the world's largest social media platform. By connecting it to N8N, you can automate posting to Facebook pages, sharing content, and managing your social media presence automatically.
 
-## Prerequisites
+### ✅ What You'll Get
 
-Before starting, ensure you have:
+- Automatically post content to Facebook pages
+- Share content across multiple pages
+- Manage business page content
+- Track social media performance
+- Save time on social media management
 
-- A Facebook account
-- A Facebook Business Page
-- Basic understanding of API authentication concepts
+## 🛠️ What You Need Before Starting
 
-## Step 1: Create a Facebook App
+Make sure you have:
 
-1. Go to [Facebook Developers Apps](https://developers.facebook.com/apps/)
-2. Click "Create App"
-3. In `Add use cases`, choose the app type **Other** → **Business**
-4. Click "Create App"
-5. After creating the app, in the dashboard of the app, find and set up the product called `Facebook Login for Business`, then click `Set up`
+- ✅ A Facebook account
+- ✅ A Facebook Business Page (recommended for business use)
+- ✅ About 10-15 minutes to complete the setup
+- ✅ Your Facebook password ready
 
-## Step 2: Configure App Settings
+## 📋 Step-by-Step Setup
 
-1. In your app dashboard, go to "App Settings" → "Basic"
-2. Note down your credentials:
-   - **App ID**: Your app's unique identifier
-   - **App Secret**: Your app's secret key (keep this secure)
-3. Enter the field "Privacy Policy URL":
-   - You can simply use this URL: `https://www.notion.so/Privacy-Policy-23bcdfbb0c61807fadd7f76ba4ef59fe`
-   - Or you can create a new one yourself using [Notion](https://www.notion.so) to create a new document with the same content as the URL above. Then set the permission as `Anyone via link`.
-4. Click "Save Changes"
+### Step 1: Create Your Facebook App
 
-## Step 3: Set app mode to `Live`
+Think of this as creating a "bridge" between Facebook and N8N:
 
-- Click the toggle button in the picture
-  ![Set Live](../../../assets/facebook/fb-live.png)
+1. **Open your web browser**
+2. **Go to Facebook Developers**: [Click here to visit](https://developers.facebook.com/apps/)
+3. **Sign in with your Facebook account** if prompted
+4. **Click "Create App"** (usually a blue button)
 
-## Step 4: Generate Access Token
+### Step 2: Choose Your App Type
 
-1. From the menu bar, click "Tool" → "Graph API Explorer"
-   ![Graph API Explorer](../../../assets/facebook/facebook-graph-api.png)
-2. In "Meta App", select your app.
-3. In "User or Page", select "Get Page Access Token"
+1. **In the "Add use cases" section**, you'll see different options
+2. **Choose "Other"** → **"Business"**
+3. **Click "Create App"**
+4. **After creating the app**, look for the product called `Facebook Login for Business`
+5. **Click "Set up"** next to it
 
-- You need to be logged in with your Facebook account, then choose the page you want to access like this:
-  ![Grant Access](../../../assets/facebook/fb-grant-access.png)
-- Then click "Save"
+### Step 3: Configure Your App Settings
 
-4. Add the "Permissions" for the access token following this:
+This step sets up the basic information for your app:
 
-```
-pages_show_list
-business_management
-attribution_read
-page_events
-pages_read_engagement
-pages_manage_posts
-```
+1. **In your app dashboard**, go to "App Settings" → "Basic"
+2. **Note down these important numbers**:
 
-5. Click "Generate Access Token", then click the button "Copy" to copy your access token
-   ![Copy Access Token](../../../assets/facebook/facebook-copy-access-token.png)
+   - **App ID**: A long string of numbers
+   - **App Secret**: Another long string (keep this secret!)
 
-## Step 5: Extend access token expiry for longer
+3. **Find "Privacy Policy URL"** and enter:
 
-1. From "Tool" → Select "Access token debugger"
-   ![Token debug](../../../assets/facebook/facebook-token-debug.png)
-2. Paste your token that you copied into the input field, then click the button "Debug"
-3. Scroll to the end and you will see the button "Extend Access Token", click it.
-4. You will get a new access token with green color, copy and save it to use later
+   - You can use this URL: `https://www.notion.so/Privacy-Policy-23bcdfbb0c61807fadd7f76ba4ef59fe`
+   - Or create your own using [Notion](https://www.notion.so)
 
-## Next Steps
+4. **Click "Save Changes"**
 
-Proceed to [N8N Workflow](../05-workflows/01-create-n8n-workflow.md).
+### Step 4: Make Your App Live
 
-## Additional Resources
+This step allows your app to work properly:
 
-- [Facebook Graph API Documentation](https://developers.facebook.com/docs/graph-api)
-- [Facebook OAuth 2.0 Guide](https://developers.facebook.com/docs/facebook-login/security)
-- [N8N Facebook Integrations](https://docs.n8n.io/integrations/nodes/n8n-nodes-base.facebook/)
-- [Facebook Developers Portal](https://developers.facebook.com/)
-- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+1. **Look for a toggle button** that says "Live" or "Development"
+2. **Click the toggle** to switch it to "Live" mode
+
+![Set Live](../../../assets/facebook/fb-live.png)
+
+### Step 5: Generate Your Access Token
+
+This creates the "key" that N8N will use to access Facebook:
+
+1. **From the menu bar**, click "Tools" → "Graph API Explorer"
+
+![Graph API Explorer](../../../assets/facebook/facebook-graph-api.png)
+
+2. **In "Meta App"**, select your app from the dropdown
+3. **In "User or Page"**, select "Get Page Access Token"
+4. **You'll need to log in** with your Facebook account
+5. **Choose the page** you want to access
+
+![Grant Access](../../../assets/facebook/fb-grant-access.png)
+
+6. **Click "Save"**
+
+### Step 6: Add Permissions
+
+This tells Facebook what your automation can do:
+
+1. **Look for "Permissions"** section
+2. **Add these permissions** one by one:
+
+   - `pages_show_list`
+   - `business_management`
+   - `attribution_read`
+   - `page_events`
+   - `pages_read_engagement`
+   - `pages_manage_posts`
+
+3. **Click "Generate Access Token"**
+4. **Click "Copy"** to copy your access token
+
+![Copy Access Token](../../../assets/facebook/facebook-copy-access-token.png)
+
+### Step 7: Extend Your Token (Make It Last Longer)
+
+Facebook tokens expire quickly, so we need to extend them:
+
+1. **From "Tools"**, select "Access Token Debugger"
+
+![Token debug](../../../assets/facebook/facebook-token-debug.png)
+
+2. **Paste your token** that you copied earlier
+3. **Click "Debug"**
+4. **Scroll to the bottom** and you'll see "Extend Access Token"
+5. **Click "Extend Access Token"**
+6. **Copy the new token** (it will be green) - this one lasts longer
+
+## ✅ How to Check if Setup Worked
+
+1. **You should have your App ID and App Secret** written down
+2. **Your app should be in "Live" mode**
+3. **You should have generated an access token**
+4. **You should have extended the token** (the green one)
+
+## 🚨 Troubleshooting
+
+### Can't Find the Create App Button?
+
+- **Make sure you're signed in** to the right Facebook account
+- **Try refreshing the page**
+- **Check that you're on the developers page**: developers.facebook.com/apps
+
+### App Creation Failed?
+
+- **Try a different app name** (maybe it's already taken)
+- **Make sure you chose "Other" → "Business"**
+- **Check that you're using the right Facebook account**
+
+### Can't Generate Access Token?
+
+- **Make sure you're logged in** to Facebook
+- **Check that you selected the right page**
+- **Try refreshing the Graph API Explorer**
+
+### Token Not Working?
+
+- **Make sure you extended the token** (the green one)
+- **Check that you copied the entire token**
+- **Try generating a new token** if the old one expired
+
+### Still Having Problems?
+
+- **Try creating a new app** with a different name
+- **Check that you're using the right Facebook account**
+- **Make sure you have admin access** to your Facebook page
+
+## 🎉 You're Ready for the Next Step!
+
+Once you have your Facebook credentials set up, you can:
+
+1. **Connect Google**: [Set up Google automation](./01-get-access-token-for-google.md)
+2. **Connect LinkedIn**: [Set up LinkedIn automation](./02-get-access-token-for-linkedin.md)
+3. **Start creating workflows**: Use Facebook in your N8N automations
+
+## 📚 Additional Resources
+
+- **Need help?** Check [Facebook Graph API documentation](https://developers.facebook.com/docs/graph-api)
+- **Want to learn more?** Try [Facebook OAuth guide](https://developers.facebook.com/docs/facebook-login/security)
+- **N8N specific help**: [N8N Facebook integrations](https://docs.n8n.io/integrations/nodes/n8n-nodes-base.facebook/)
+- **Test your setup**: [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+
+---
+
+_💡 **Tip**: Keep your App ID, App Secret, and extended access token safe. You'll need them when connecting to N8N later._
