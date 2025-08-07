@@ -8,12 +8,12 @@ Before setting up N8N, you need to install Docker Desktop on your system.
 
 ### 1. Download Docker Desktop
 
-Download `docker desktop` from [here](https://www.docker.com/get-started/).
+Download Docker Desktop from [here](https://www.docker.com/get-started/).
 
 ### 2. Install and Sign In
 
-1. Install `docker desktop` app
-2. `Sign in` or `sign up` if you don't have a Docker account
+1. Install the Docker Desktop app
+2. Sign in or sign up if you don't have a Docker account
 3. After installation and login, Docker Desktop will look like this:
 
    ![Demo docker desktop](../../assets/setup/docker-desktop.png)
@@ -26,7 +26,7 @@ Check that `docker` and `docker-compose` are active by running:
 docker -v && docker-compose -v
 ```
 
-The result if `successfully checked version` will look like this:
+If the installation is successful, the version check will look like this:
 
 ![Check version docker](../../assets/setup/check-version-docker.png)
 

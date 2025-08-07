@@ -8,12 +8,12 @@ Make sure you have completed the [Docker Desktop installation](../01-setup/01-do
 
 ### 1. Download VSCode
 
-Download `VSCode` app from [here](https://code.visualstudio.com/download).
+Download the VSCode app from [here](https://code.visualstudio.com/download).
 
 ### 2. Install VSCode
 
-Install `VSCode` into your computer following the installation wizard.
+Install VSCode on your computer following the installation wizard.
 
 ## Next Steps
 
-Once VSCode is installed, proceed to [Clone and Setup N8N](../03-n8n-setup/01-clone-setup-n8n.md).
+Once VSCode is installed, proceed to [Clone and Set up N8N](../03-n8n-setup/01-clone-setup-n8n.md).

@@ -14,7 +14,7 @@ Welcome to the N8N Auto Flow documentation. This guide will walk you through set
 
 ### 3. [N8N Setup](./03-n8n-setup/)
 
-- [Clone and Setup N8N](./03-n8n-setup/01-clone-setup-n8n.md) - Complete setup including account creation and activation
+- [Clone and Set up N8N](./03-n8n-setup/01-clone-setup-n8n.md) - Complete setup including account creation and activation
 
 ### 4. [Authentication](./04-authentication/)
 
@@ -31,9 +31,9 @@ Welcome to the N8N Auto Flow documentation. This guide will walk you through set
    - [Install Docker Desktop](./01-setup/01-docker-desktop.md)
    - [Install VSCode](./02-vscode/01-install-vscode.md)
 
-2. **Setup N8N**
+2. **Set up N8N**
 
-   - [Clone and Setup N8N](./03-n8n-setup/01-clone-setup-n8n.md)
+   - [Clone and Set up N8N](./03-n8n-setup/01-clone-setup-n8n.md)
 
 3. **Configure Authentication**
 

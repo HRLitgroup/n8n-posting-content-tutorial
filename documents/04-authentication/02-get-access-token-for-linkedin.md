@@ -21,7 +21,7 @@ Before starting, ensure you have:
    - **LinkedIn Page**: Select your company page (or create one)
    - **App logo**: Upload a logo for your app
    - **App description**: Brief description of your app's purpose
-   - Checked on checkbox `I have read and agree to these terms`
+   - Check the checkbox `I have read and agree to these terms`
 4. Click "Create App"
 
 ## Step 2: Configure OAuth 2.0 Settings
