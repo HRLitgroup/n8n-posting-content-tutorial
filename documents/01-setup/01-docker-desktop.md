@@ -16,7 +16,7 @@ Download `docker desktop` from [here](https://www.docker.com/get-started/).
 2. `Sign in` or `sign up` if you don't have a Docker account
 3. After installation and login, Docker Desktop will look like this:
 
-   ![Demo docker desktop](../../assets/docker-desktop.png)
+   ![Demo docker desktop](../../assets/setup/docker-desktop.png)
 
 ### 3. Verify Installation
 
@@ -28,7 +28,7 @@ docker -v && docker-compose -v
 
 The result if `successfully checked version` will look like this:
 
-![Check version docker](../../assets/check-version-docker.png)
+![Check version docker](../../assets/setup/check-version-docker.png)
 
 ## Next Steps
 
