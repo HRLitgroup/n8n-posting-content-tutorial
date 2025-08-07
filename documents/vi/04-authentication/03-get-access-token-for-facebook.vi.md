@@ -1,82 +1,175 @@
-# Lấy Token Truy Cập Facebook API cho N8N
+# Kết Nối Facebook với N8N
 
-## Tổng Quan
+## 🎯 Chúng Ta Đang Thiết Lập Gì?
 
-Hướng dẫn này cung cấp hướng dẫn từng bước để lấy token truy cập Facebook API có thể được sử dụng trong quy trình N8N cho marketing Facebook, tự động hóa mạng xã hội và quản lý trang doanh nghiệp.
+**Facebook** là nền tảng mạng xã hội lớn nhất thế giới. Bằng cách kết nối nó với N8N, bạn có thể tự động hóa việc đăng lên trang Facebook, chia sẻ nội dung và quản lý sự hiện diện mạng xã hội của mình.
 
-## Yêu Cầu Trước Khi Bắt Đầu
+### ✅ Bạn Sẽ Có Gì
 
-Trước khi bắt đầu, đảm bảo bạn có:
+- Tự động đăng nội dung lên trang Facebook
+- Chia sẻ nội dung trên nhiều trang
+- Quản lý nội dung trang kinh doanh
+- Theo dõi hiệu suất mạng xã hội
+- Tiết kiệm thời gian quản lý mạng xã hội
 
-- Tài khoản Facebook
-- Trang Doanh Nghiệp Facebook
-- Hiểu biết cơ bản về khái niệm xác thực API
+## 🛠️ Bạn Cần Gì Trước Khi Bắt Đầu
 
-## Bước 1: Tạo Ứng Dụng Facebook
+Đảm bảo bạn có:
 
-1. Đi đến [Facebook Developers Apps](https://developers.facebook.com/apps/)
-2. Nhấp "Create App"
-3. Trong `Add use cases`, chọn loại ứng dụng **Other** → **Business**
-4. Nhấp "Create App"
-5. Sau khi tạo ứng dụng, trong dashboard của ứng dụng, tìm và thiết lập sản phẩm có tên `Facebook Login for Business`, sau đó nhấp `Set up`
+- ✅ Tài khoản Facebook
+- ✅ Trang Facebook Kinh Doanh (khuyến nghị cho sử dụng kinh doanh)
+- ✅ Khoảng 10-15 phút để hoàn thành thiết lập
+- ✅ Mật khẩu Facebook sẵn sàng
 
-## Bước 2: Cấu Hình Cài Đặt Ứng Dụng
+## 📋 Thiết Lập Từng Bước
 
-1. Trong dashboard ứng dụng, đi đến "App Settings" → "Basic"
-2. Ghi chú thông tin xác thực của bạn:
-   - **App ID**: Định danh duy nhất của ứng dụng
-   - **App Secret**: Khóa bí mật của ứng dụng (giữ an toàn)
-3. Nhập trường "Privacy Policy URL":
-   - Bạn có thể đơn giản sử dụng URL này: `https://www.notion.so/Privacy-Policy-23bcdfbb0c61807fadd7f76ba4ef59fe`
-   - Hoặc bạn có thể tạo một cái mới bằng cách sử dụng [Notion](https://www.notion.so) để tạo tài liệu mới với nội dung giống như URL trên. Sau đó đặt quyền là `Anyone via link`.
-4. Nhấp "Save Changes"
+### Bước 1: Tạo Ứng Dụng Facebook
 
-## Bước 3: Đặt chế độ ứng dụng thành `Live`
+Hãy nghĩ về điều này như tạo một "cầu nối" giữa Facebook và N8N:
 
-- Nhấp nút toggle trong hình
-  ![Set Live](../../../assets/facebook/fb-live.png)
+1. **Mở trình duyệt web**
+2. **Đi đến Facebook Developers**: [Nhấp vào đây để truy cập](https://developers.facebook.com/apps/)
+3. **Đăng nhập với tài khoản Facebook** nếu được nhắc
+4. **Nhấp "Create App"** (thường là nút màu xanh)
 
-## Bước 4: Tạo Token Truy Cập
+### Bước 2: Chọn Loại Ứng Dụng
 
-1. Từ thanh menu, nhấp "Tool" → "Graph API Explorer"
-   ![Graph API Explorer](../../../assets/facebook/facebook-graph-api.png)
-2. Trong "Meta App", chọn ứng dụng của bạn.
-3. Trong "User or Page", chọn "Get Page Access Token"
+1. **Trong phần "Add use cases"**, bạn sẽ thấy các tùy chọn khác nhau
+2. **Chọn "Other"** → **"Business"**
+3. **Nhấp "Create App"**
+4. **Sau khi tạo ứng dụng**, tìm sản phẩm tên `Facebook Login for Business`
+5. **Nhấp "Set up"** bên cạnh nó
 
-- Bạn cần đăng nhập bằng tài khoản Facebook, sau đó chọn trang bạn muốn truy cập như thế này:
-  ![Grant Access](../../../assets/facebook/fb-grant-access.png)
-- Sau đó nhấp "Save"
+### Bước 3: Cấu Hình Cài Đặt Ứng Dụng
 
-4. Thêm "Permissions" cho token truy cập theo hướng dẫn này:
+Bước này thiết lập thông tin cơ bản cho ứng dụng:
 
-```
-pages_show_list
-business_management
-attribution_read
-page_events
-pages_read_engagement
-pages_manage_posts
-```
+1. **Trong bảng điều khiển ứng dụng**, đi đến "App Settings" → "Basic"
+2. **Ghi chép những số quan trọng này**:
 
-5. Nhấp "Generate Access Token", sau đó nhấp nút "Copy" để sao chép token truy cập của bạn
-   ![Copy Access Token](../../../assets/facebook/facebook-copy-access-token.png)
+   - **App ID**: Một chuỗi dài số
+   - **App Secret**: Một chuỗi dài khác (giữ bí mật!)
 
-## Bước 5: Mở rộng thời hạn token truy cập lâu hơn
+3. **Tìm "Privacy Policy URL"** và nhập:
 
-1. Từ "Tool" → Chọn "Access token debugger"
-   ![Token debug](../../../assets/facebook/facebook-token-debug.png)
-2. Dán token bạn đã sao chép vào trường nhập liệu, sau đó nhấp nút "Debug"
-3. Cuộn xuống cuối và bạn sẽ thấy nút "Extend Access Token", nhấp vào nó.
-4. Bạn sẽ nhận được token truy cập mới với màu xanh lá, sao chép và lưu để sử dụng sau này
+   - Bạn có thể sử dụng URL này: `https://www.notion.so/Privacy-Policy-23bcdfbb0c61807fadd7f76ba4ef59fe`
+   - Hoặc tạo của riêng bạn bằng [Notion](https://www.notion.so)
 
-## Bước Tiếp Theo
+4. **Nhấp "Save Changes"**
 
-Tiếp tục với [Quy Trình N8N](../05-workflows/01-create-n8n-workflow.vi.md).
+### Bước 4: Làm Ứng Dụng Hoạt Động
 
-## Tài Nguyên Bổ Sung
+Bước này cho phép ứng dụng hoạt động đúng cách:
 
-- [Tài Liệu Facebook Graph API](https://developers.facebook.com/docs/graph-api)
-- [Hướng Dẫn Facebook OAuth 2.0](https://developers.facebook.com/docs/facebook-login/security)
-- [Tích Hợp Facebook N8N](https://docs.n8n.io/integrations/nodes/n8n-nodes-base.facebook/)
-- [Facebook Developers Portal](https://developers.facebook.com/)
-- [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+1. **Tìm nút toggle** nói "Live" hoặc "Development"
+2. **Nhấp toggle** để chuyển sang chế độ "Live"
+
+![Set Live](../../../assets/facebook/fb-live.png)
+
+### Bước 5: Tạo Token Truy Cập
+
+Điều này tạo ra "chìa khóa" mà N8N sẽ sử dụng để truy cập Facebook:
+
+1. **Từ thanh menu**, nhấp "Tools" → "Graph API Explorer"
+
+![Graph API Explorer](../../../assets/facebook/facebook-graph-api.png)
+
+2. **Trong "Meta App"**, chọn ứng dụng từ dropdown
+3. **Trong "User or Page"**, chọn "Get Page Access Token"
+4. **Bạn sẽ cần đăng nhập** với tài khoản Facebook
+5. **Chọn trang** bạn muốn truy cập
+
+![Grant Access](../../../assets/facebook/fb-grant-access.png)
+
+6. **Nhấp "Save"**
+
+### Bước 6: Thêm Quyền
+
+Điều này cho Facebook biết tự động hóa có thể làm gì:
+
+1. **Tìm phần "Permissions"**
+2. **Thêm các quyền này** từng cái một:
+
+   - `pages_show_list`
+   - `business_management`
+   - `attribution_read`
+   - `page_events`
+   - `pages_read_engagement`
+   - `pages_manage_posts`
+
+3. **Nhấp "Generate Access Token"**
+4. **Nhấp "Copy"** để sao chép token truy cập
+
+![Copy Access Token](../../../assets/facebook/facebook-copy-access-token.png)
+
+### Bước 7: Mở Rộng Token (Làm Cho Nó Tồn Tại Lâu Hơn)
+
+Token Facebook hết hạn nhanh, vì vậy chúng ta cần mở rộng chúng:
+
+1. **Từ "Tools"**, chọn "Access Token Debugger"
+
+![Token debug](../../../assets/facebook/facebook-token-debug.png)
+
+2. **Dán token** bạn đã sao chép trước đó
+3. **Nhấp "Debug"**
+4. **Cuộn xuống cuối** và bạn sẽ thấy "Extend Access Token"
+5. **Nhấp "Extend Access Token"**
+6. **Sao chép token mới** (nó sẽ có màu xanh) - cái này tồn tại lâu hơn
+
+## ✅ Cách Kiểm Tra Thiết Lập Có Hoạt Động Không
+
+1. **Bạn nên có App ID và App Secret** ghi chép
+2. **Ứng dụng nên ở chế độ "Live"**
+3. **Bạn nên đã tạo token truy cập**
+4. **Bạn nên đã mở rộng token** (cái màu xanh)
+
+## 🚨 Khắc Phục Sự Cố
+
+### Không Tìm Thấy Nút Create App?
+
+- **Đảm bảo bạn đã đăng nhập** vào tài khoản Facebook đúng
+- **Thử làm mới trang**
+- **Kiểm tra bạn ở trang developers**: developers.facebook.com/apps
+
+### Tạo Ứng Dụng Thất Bại?
+
+- **Thử tên ứng dụng khác** (có thể đã được sử dụng)
+- **Đảm bảo bạn chọn "Other" → "Business"**
+- **Kiểm tra bạn sử dụng tài khoản Facebook đúng**
+
+### Không Thể Tạo Token Truy Cập?
+
+- **Đảm bảo bạn đã đăng nhập** vào Facebook
+- **Kiểm tra bạn chọn đúng trang**
+- **Thử làm mới Graph API Explorer**
+
+### Token Không Hoạt Động?
+
+- **Đảm bảo bạn đã mở rộng token** (cái màu xanh)
+- **Kiểm tra bạn sao chép toàn bộ token**
+- **Thử tạo token mới** nếu cái cũ hết hạn
+
+### Vẫn Có Vấn Đề?
+
+- **Thử tạo ứng dụng mới** với tên khác
+- **Kiểm tra bạn sử dụng tài khoản Facebook đúng**
+- **Đảm bảo bạn có quyền quản trị** cho trang Facebook
+
+## 🎉 Bạn Sẵn Sàng Cho Bước Tiếp Theo!
+
+Sau khi thiết lập thông tin đăng nhập Facebook, bạn có thể:
+
+1. **Kết nối Google**: [Thiết lập tự động hóa Google](./01-get-access-token-for-google.vi.md)
+2. **Kết nối LinkedIn**: [Thiết lập tự động hóa LinkedIn](./02-get-access-token-for-linkedin.vi.md)
+3. **Bắt đầu tạo quy trình**: Sử dụng Facebook trong tự động hóa N8N
+
+## 📚 Tài Nguyên Bổ Sung
+
+- **Cần giúp đỡ?** Kiểm tra [Tài liệu Facebook Graph API](https://developers.facebook.com/docs/graph-api)
+- **Muốn tìm hiểu thêm?** Thử [Hướng dẫn OAuth Facebook](https://developers.facebook.com/docs/facebook-login/security)
+- **Trợ giúp N8N**: [Tích hợp Facebook N8N](https://docs.n8n.io/integrations/nodes/n8n-nodes-base.facebook/)
+- **Kiểm tra thiết lập**: [Graph API Explorer](https://developers.facebook.com/tools/explorer/)
+
+---
+
+_💡 **Mẹo**: Giữ App ID, App Secret và token truy cập mở rộng an toàn. Bạn sẽ cần chúng khi kết nối với N8N sau này._
