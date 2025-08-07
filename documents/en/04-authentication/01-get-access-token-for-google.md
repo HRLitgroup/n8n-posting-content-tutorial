@@ -14,9 +14,9 @@ Before starting, ensure you have:
 ## Step 1: Create a Google Cloud Project
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-   ![Google Console](../../assets/google/google-console.png)
+   ![Google Console](../../../assets/google/google-console.png)
 2. In the modal that opens, click → "New Project"
-   ![Google Create Project](../../assets/google/google-create-project.png)
+   ![Google Create Project](../../../assets/google/google-create-project.png)
 3. Enter a project name (e.g., "N8N Integration")
 4. Click "Create"
 
@@ -38,15 +38,15 @@ Before starting, ensure you have:
 1. Go to "APIs & Services" → "Credentials"
 2. Note if you see this message:
    `Remember to configure the OAuth consent screen with information about your application.`
-   ![Config consent screen](../../assets/google/google-config-consent-screen.png)
+   ![Config consent screen](../../../assets/google/google-config-consent-screen.png)
    => Please click on `Config consent screen` to create a configuration before executing the next step. After creating the configuration successfully, click [here](https://console.cloud.google.com/apis/credentials) to redirect again to the Credentials page.
 3. Click "Create Credentials" → "OAuth 2.0 Client IDs"
-   ![Create credentials](../../assets/google/google-create-credentials.png)
+   ![Create credentials](../../../assets/google/google-create-credentials.png)
 4. Fill in the form following this guide:
    - Application type: `Web application`
    - Name: `n8n-posting-content`
    - Authorized redirect URIs: `http://localhost:5678/rest/oauth2-credential/callback`
-     ![OAuth](../../assets/google/google-create-oauth.png)
+     ![OAuth](../../../assets/google/google-create-oauth.png)
      then click the `Create` button.
 5. After creation, you will get a modal opened with the info of `Client ID` and `Client secret`. To reuse this credentials info later, please click on `Download JSON` to save the credentials file.
 

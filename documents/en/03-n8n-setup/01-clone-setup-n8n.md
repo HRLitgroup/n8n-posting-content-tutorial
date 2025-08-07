@@ -20,7 +20,7 @@ Clone this repository using one of these methods:
 3. Click `Download ZIP`
 4. Extract the ZIP file to your desired location
 
-![Download repo](../../assets/setup/clone-setup-n8n.png)
+![Download repo](../../../assets/setup/clone-setup-n8n.png)
 
 #### Option B: Git Clone
 
@@ -71,17 +71,17 @@ If you cannot access the link in step 4:
 
    Follow the N8N setup wizard to create your account:
 
-   ![Signup N8N](../../assets/setup/signup-n8n.png)
+   ![Signup N8N](../../../assets/setup/signup-n8n.png)
 
    **Important**: Choose the option `Send me a free license key` to proceed with the next step.
 
-   ![Send activate key](../../assets/setup/send-activate-key.png)
+   ![Send activate key](../../../assets/setup/send-activate-key.png)
 
 2. **Activate Your License**
 
    Wait a moment to receive the activation email from N8N, then click `Active License Key` to activate your N8N free trial plan.
 
-   ![Active](../../assets/setup/mail-active-n8n.png)
+   ![Active](../../../assets/setup/mail-active-n8n.png)
 
 3. **Complete Setup**
 

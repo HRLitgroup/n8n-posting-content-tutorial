@@ -34,17 +34,17 @@ Before starting, ensure you have:
 ## Step 3: Set app mode to `Live`
 
 - Click the toggle button in the picture
-  ![Set Live](../../assets/facebook/fb-live.png)
+  ![Set Live](../../../assets/facebook/fb-live.png)
 
 ## Step 4: Generate Access Token
 
 1. From the menu bar, click "Tool" → "Graph API Explorer"
-   ![Graph API Explorer](../../assets/facebook/facebook-graph-api.png)
+   ![Graph API Explorer](../../../assets/facebook/facebook-graph-api.png)
 2. In "Meta App", select your app.
 3. In "User or Page", select "Get Page Access Token"
 
 - You need to be logged in with your Facebook account, then choose the page you want to access like this:
-  ![Grant Access](../../assets/facebook/fb-grant-access.png)
+  ![Grant Access](../../../assets/facebook/fb-grant-access.png)
 - Then click "Save"
 
 4. Add the "Permissions" for the access token following this:
@@ -59,12 +59,12 @@ pages_manage_posts
 ```
 
 5. Click "Generate Access Token", then click the button "Copy" to copy your access token
-   ![Copy Access Token](../../assets/facebook/facebook-copy-access-token.png)
+   ![Copy Access Token](../../../assets/facebook/facebook-copy-access-token.png)
 
 ## Step 5: Extend access token expiry for longer
 
 1. From "Tool" → Select "Access token debugger"
-   ![Token debug](../../assets/facebook/facebook-token-debug.png)
+   ![Token debug](../../../assets/facebook/facebook-token-debug.png)
 2. Paste your token that you copied into the input field, then click the button "Debug"
 3. Scroll to the end and you will see the button "Extend Access Token", click it.
 4. You will get a new access token with green color, copy and save it to use later

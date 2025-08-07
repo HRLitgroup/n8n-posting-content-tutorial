@@ -2,6 +2,11 @@
 
 A comprehensive guide for setting up and using N8N for automation workflows.
 
+## 🌐 Language Selection
+
+- [🇺🇸 English](./README.md) (Current)
+- [🇻🇳 Tiếng Việt](./README.vi.md)
+
 ## 📚 Documentation
 
 For detailed setup and usage instructions, please refer to our organized documentation:
@@ -10,19 +15,19 @@ For detailed setup and usage instructions, please refer to our organized documen
 
 ### Quick Navigation
 
-- [🚀 Setup Guide](./documents/01-setup/01-docker-desktop.md)
-- [💻 VSCode Setup](./documents/02-vscode/01-install-vscode.md)
-- [⚙️ N8N Installation](./documents/03-n8n-setup/01-clone-setup-n8n.md)
-- [🔐 Authentication](./documents/04-authentication/get-access-token.md)
-- [🔄 Workflows](./documents/05-workflows/01-create-n8n-workflow.md)
+- [🚀 Setup Guide](./documents/en/01-setup/01-docker-desktop.md)
+- [💻 VSCode Setup](./documents/en/02-vscode/01-install-vscode.md)
+- [⚙️ N8N Installation](./documents/en/03-n8n-setup/01-clone-setup-n8n.md)
+- [🔐 Authentication](./documents/en/04-authentication/get-access-token.md)
+- [🔄 Workflows](./documents/en/05-workflows/01-create-n8n-workflow.md)
 
 ## 🚀 Quick Start
 
-1. **Install Docker Desktop** - [Guide](./documents/01-setup/01-docker-desktop.md)
-2. **Install VSCode** - [Guide](./documents/02-vscode/01-install-vscode.md)
-3. **Set up N8N** - [Guide](./documents/03-n8n-setup/01-clone-setup-n8n.md) (includes account creation & activation)
-4. **Configure Authentication** - [Guide](./documents/04-authentication/get-access-token.md)
-5. **Create Workflows** - [Guide](./documents/05-workflows/01-create-n8n-workflow.md)
+1. **Install Docker Desktop** - [Guide](./documents/en/01-setup/01-docker-desktop.md)
+2. **Install VSCode** - [Guide](./documents/en/02-vscode/01-install-vscode.md)
+3. **Set up N8N** - [Guide](./documents/en/03-n8n-setup/01-clone-setup-n8n.md) (includes account creation & activation)
+4. **Configure Authentication** - [Guide](./documents/en/04-authentication/get-access-token.md)
+5. **Create Workflows** - [Guide](./documents/en/05-workflows/01-create-n8n-workflow.md)
 
 ## 📁 Project Structure
 
@@ -30,11 +35,9 @@ For detailed setup and usage instructions, please refer to our organized documen
 n8n_auto_flow/
 ├── assets/                    # Images and static assets
 ├── documents/                 # Organized documentation
-│   ├── 01-setup/            # Setup guides
-│   ├── 02-vscode/           # VSCode setup
-│   ├── 03-n8n-setup/        # N8N installation
-│   ├── 04-authentication/    # API authentication
-│   └── 05-workflows/        # Workflow creation
+│   ├── en/                  # English documentation
+│   ├── vi/                  # Vietnamese documentation
+│   └── README.md            # Language selector
 ├── docker-compose.yml        # Docker configuration
 └── README.md                 # This file
 ```
