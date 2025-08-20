@@ -4,16 +4,13 @@
 
 This section will cover how to create, configure, and manage N8N workflows for automation tasks.
 
-## TODO
+## Steps
 
-This section is currently under development. The following topics will be covered:
-
-- Basic workflow creation
-- Node configuration
-- Workflow execution
-- Error handling
-- Best practices for workflow design
-- Integration with external services
+| Step | Description         | Link                                             |
+| ---- | ------------------- | ------------------------------------------------ |
+| 1    | Create Google Sheet | [Create Sheet](./01-create-sheet.md)             |
+| 2    | Create Credentials  | [Create Credentials](./02-create-credentials.md) |
+| 3    | Create Workflow     | [Create Workflow](./03-create-workflow.md)       |
 
 ## Prerequisites
 
@@ -25,3 +22,8 @@ Before creating workflows, ensure you have:
 ## Next Steps
 
 This section will be expanded with detailed workflow creation tutorials and examples.
+
+---
+
+**Previous**: [Get Access Token](../04-authentication/get-access-token.md)  
+**Next**: [Create Sheet](./01-create-sheet.md)

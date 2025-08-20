@@ -6,10 +6,13 @@
    ![create_credential_modal](../../../assets/workflows/credentials/create_credential_modal.png)
 
 2. You must create credentials in the following order:
-   - Google Sheets account
-   - Google Drive account
-   - Facebook Graph account
-   - LinkedIn account
+
+| Order | Platform               | Purpose                    |
+| ----- | ---------------------- | -------------------------- |
+| 1     | Google Sheets account  | Access to spreadsheet data |
+| 2     | Google Drive account   | Access to image files      |
+| 3     | Facebook Graph account | Post to Facebook           |
+| 4     | LinkedIn account       | Post to LinkedIn           |
 
 ![create_credentials](../../../assets/workflows/credentials/create_credential.png)
 
@@ -44,3 +47,8 @@ After verification, you'll see a green success message like this. (Repeat the sa
 ## LinkedIn Account
 
 ![linkedin](../../../assets/workflows/credentials/linkedin/credential_linkedin_connect.png)
+
+---
+
+**Previous**: [Create Sheet](./01-create-sheet.md)  
+**Next**: [Create Workflow](./03-create-workflow.md)
