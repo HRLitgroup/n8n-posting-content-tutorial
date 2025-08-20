@@ -13,13 +13,17 @@ Hướng dẫn toàn diện để thiết lập và sử dụng N8N cho các quy
 
 **[📖 Xem Tài Liệu Đầy Đủ](./documents/README.md)**
 
+[Lưu ý] Nếu bạn là người mới bắt đầu, vui lòng đọc phiên bản này:
+
+**[📖 Xem Tài Liệu Dành Cho Người Mới Bắt Đầu](https://github.com/HRLitgroup/n8n-posting-content-tutorial/blob/feature/create-user-friendly-for-non-tech-people/README.vi.md)**
+
 ### Điều Hướng Nhanh
 
 - [🚀 Hướng Dẫn Thiết Lập](./documents/vi/01-setup/01-docker-desktop.vi.md)
 - [💻 Thiết Lập VSCode](./documents/vi/02-vscode/01-install-vscode.vi.md)
 - [⚙️ Cài Đặt N8N](./documents/vi/03-n8n-setup/01-clone-setup-n8n.vi.md)
 - [🔐 Xác Thực](./documents/vi/04-authentication/get-access-token.vi.md)
-- [🔄 Quy Trình](./documents/vi/05-workflows/01-create-n8n-workflow.vi.md)
+- [🔄 Quy Trình](./documents/vi/05-workflows/n8n-workflow.vi.md)
 
 ## 🚀 Bắt Đầu Nhanh
 
@@ -27,7 +31,7 @@ Hướng dẫn toàn diện để thiết lập và sử dụng N8N cho các quy
 2. **Cài đặt VSCode** - [Hướng dẫn](./documents/vi/02-vscode/01-install-vscode.vi.md)
 3. **Thiết lập N8N** - [Hướng dẫn](./documents/vi/03-n8n-setup/01-clone-setup-n8n.vi.md) (bao gồm tạo tài khoản & kích hoạt)
 4. **Cấu hình Xác thực** - [Hướng dẫn](./documents/vi/04-authentication/get-access-token.vi.md)
-5. **Tạo Quy trình** - [Hướng dẫn](./documents/vi/05-workflows/01-create-n8n-workflow.vi.md)
+5. **Tạo Quy trình** - [Hướng dẫn](./documents/vi/05-workflows/n8n-workflow.vi.md)
 
 ## 📁 Cấu Trúc Dự Án
 

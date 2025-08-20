@@ -13,13 +13,17 @@ For detailed setup and usage instructions, please refer to our organized documen
 
 **[📖 View Full Documentation](./documents/README.md)**
 
+[Note] If you are beginner please read this version:
+
+**[📖 View Documentation For Beginner](https://github.com/HRLitgroup/n8n-posting-content-tutorial/blob/feature/create-user-friendly-for-non-tech-people/README.md)**
+
 ### Quick Navigation
 
 - [🚀 Setup Guide](./documents/en/01-setup/01-docker-desktop.md)
 - [💻 VSCode Setup](./documents/en/02-vscode/01-install-vscode.md)
 - [⚙️ N8N Installation](./documents/en/03-n8n-setup/01-clone-setup-n8n.md)
 - [🔐 Authentication](./documents/en/04-authentication/get-access-token.md)
-- [🔄 Workflows](./documents/en/05-workflows/01-create-n8n-workflow.md)
+- [🔄 Workflows](./documents/en/05-workflows/n8n-workflow.md)
 
 ## 🚀 Quick Start
 
@@ -27,7 +31,7 @@ For detailed setup and usage instructions, please refer to our organized documen
 2. **Install VSCode** - [Guide](./documents/en/02-vscode/01-install-vscode.md)
 3. **Set up N8N** - [Guide](./documents/en/03-n8n-setup/01-clone-setup-n8n.md) (includes account creation & activation)
 4. **Configure Authentication** - [Guide](./documents/en/04-authentication/get-access-token.md)
-5. **Create Workflows** - [Guide](./documents/en/05-workflows/01-create-n8n-workflow.md)
+5. **Create Workflows** - [Guide](./documents/en/05-workflows/n8n-workflow.md)
 
 ## 📁 Project Structure
 

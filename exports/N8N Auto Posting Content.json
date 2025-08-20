@@ -1,0 +1,362 @@
+{
+  "name": "N8N Auto Posting Content",
+  "nodes": [
+    {
+      "parameters": {
+        "person": "mLzVV9V70v",
+        "text": "={{ $json.content }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {
+          "visibility": "CONNECTIONS"
+        }
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        736,
+        -160
+      ],
+      "id": "416b5f9f-da84-4ff1-8b35-498d2ed87e69",
+      "name": "post_as_personal",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "xOpDBUAEVUUuWe2m",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "postAs": "organization",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        352
+      ],
+      "id": "5799a6fb-1e58-45b7-8e8a-1b13f070c013",
+      "name": "post_as_organization",
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "xOpDBUAEVUUuWe2m",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8ae39da0-42ee-4d66-9b1d-414328e4010b",
+      "name": "execute"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U",
+          "mode": "list",
+          "cachedResultName": "n8n_contents",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "status",
+              "lookupValue": "ready"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0534bd20-8ed9-4abc-a40a-25ad71991734",
+      "name": "get_contents",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "hiJ7gqVXT0mj9gik",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.image }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        448,
+        0
+      ],
+      "id": "fec4cd00-1ee3-4871-88b0-81c87a4ef071",
+      "name": "get_images",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cxuVdnDYf5rZRUgb",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "photos",
+        "sendBinaryData": true,
+        "binaryPropertyName": "data",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "message",
+                "value": "={{ $json.content }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [
+        736,
+        144
+      ],
+      "id": "421e7ca8-9916-412e-9a66-e53c29eb0219",
+      "name": "post_fb",
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "gXCLxtghK8qoEqR0",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1200,
+        192
+      ],
+      "id": "bde75132-4915-477e-bd61-2e59dc07648a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U",
+          "mode": "list",
+          "cachedResultName": "n8n_contents",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kZKFQHKA0mLgP5-wGmY56QeT5h9ykyDjNB7hRpOm35U/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "no": "={{ $('get_images').item.json.no }}",
+            "status": "posted",
+            "posted_time": "={{ $('get_images').item.json.posted_time + 1 }}"
+          },
+          "matchingColumns": [
+            "no"
+          ],
+          "schema": [
+            {
+              "id": "no",
+              "displayName": "no",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "content",
+              "displayName": "content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image",
+              "displayName": "image",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "posted_time",
+              "displayName": "posted_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        -16
+      ],
+      "id": "4968723f-85a5-446c-af36-509a93acd377",
+      "name": "update_status",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "hiJ7gqVXT0mj9gik",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "execute": {
+      "main": [
+        [
+          {
+            "node": "get_contents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_contents": {
+      "main": [
+        [
+          {
+            "node": "get_images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_images": {
+      "main": [
+        [
+          {
+            "node": "post_as_personal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "post_fb",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "post_as_personal": {
+      "main": [
+        [
+          {
+            "node": "update_status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "post_fb": {
+      "main": [
+        [
+          {
+            "node": "update_status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "240babe5-9a1b-4398-be31-7e2e20010f73",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9ec2c5ff0310d4f9d332c2a62e68f56a40ed0599970e5ab96692924355a072c9"
+  },
+  "id": "gO4uuc8RE0MpgZuN",
+  "tags": []
+}
