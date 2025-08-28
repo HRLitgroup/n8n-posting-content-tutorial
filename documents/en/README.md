@@ -1,7 +1,15 @@
-# N8N Auto Flow Documentation
+# Project: Automate Posting Content
 
-Welcome to the N8N Auto Flow documentation. This guide will walk you through setting up and using N8N for automation workflows.
+## Introduction
+The Automate Posting Content project was developed to streamline the process of publishing content across multiple channels of communication. Instead of manual posting, the system utilizes n8n – an open-source workflow automation platform – to automate the simultaneous publication of multiple posts on platforms such as Facebook, LinkedIn, and company websites.
 
+## Prerequisites for setting up the project
+1. A computer with sufficient RAM capacity
+2.  Basic knowledge of the technologies used:
+- **N8N**: n8n (pronounced n-eight-n) helps you to connect any app with an API with any other, and manipulate its data with little or no code. Customizable: highly flexible workflows and the option to build custom nodes. Convenient: use npm or Docker to try out n8n, or the Cloud hosting option if you want us to handle the infrastructure. Privacy-focused: self-host n8n for privacy and security.
+  + For more information: [N8N Doc](https://docs.n8n.io/)
+- **Docker**: [Docker doc](https://docs.docker.com/get-started/docker-overview/)
+- **VSCode**: 
 ## 📚 Documentation Structure
 
 ### 1. [Setup](./01-setup/)
