@@ -5,11 +5,12 @@ The Automate Posting Content project was developed to streamline the process of 
 
 ## Prerequisites for setting up the project
 1. A computer with sufficient RAM capacity
-2.  Basic knowledge of the technologies used:
-- **N8N**: n8n (pronounced n-eight-n) helps you to connect any app with an API with any other, and manipulate its data with little or no code. Customizable: highly flexible workflows and the option to build custom nodes. Convenient: use npm or Docker to try out n8n, or the Cloud hosting option if you want us to handle the infrastructure. Privacy-focused: self-host n8n for privacy and security.
+2. Basic knowledge of the technologies used:
+- **N8N**: n8n (pronounced n-eight-n) is an open-source automation tool that helps us connect various apps and services to create workflows, much like a digital assembly line. It allows users to visually design these workflows with nodes, each representing a different step in the process. With n8n, we can automate tasks, manage data flow, and even integrate APIs, all without needing extensive programming skills.
   + For more information: [N8N Doc](https://docs.n8n.io/)
-- **Docker**: [Docker doc](https://docs.docker.com/get-started/docker-overview/)
-- **VSCode**: 
+- **Docker**: [Docker Doc](https://docs.docker.com/get-started/docker-overview/)
+- **VSCode**
+- **Credentials and Access Token**
 ## 📚 Documentation Structure
 
 ### 1. [Setup](./01-setup/)
