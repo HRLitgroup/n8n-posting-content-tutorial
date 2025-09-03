@@ -7,9 +7,9 @@ The Automate Posting Content project was developed to streamline the process of 
 1. A computer with sufficient RAM capacity
 2. Basic knowledge of the technologies used:
 - **N8N**: n8n (pronounced n-eight-n) is an open-source automation tool that helps us connect various apps and services to create workflows, much like a digital assembly line. It allows users to visually design these workflows with nodes, each representing a different step in the process. With n8n, we can automate tasks, manage data flow, and even integrate APIs, all without needing extensive programming skills.
-  + For more information: [N8N Doc](https://docs.n8n.io/)
-- **Docker**: [Docker Doc](https://docs.docker.com/get-started/docker-overview/)
-- **VSCode**
+  + For more information: [N8N Documentation](https://docs.n8n.io/)
+- **Docker**: [Docker Documentation](https://docs.docker.com/get-started/docker-overview/)
+- **VSCode**: [VSCode Documentation](https://code.visualstudio.com/docs)
 - **Credentials and Access Token**
 ## Setup Guide
 
@@ -52,18 +52,6 @@ n8n_auto_flow/
 ├── docker-compose.yml        # Docker configuration
 └── README.md                 # Main project README
 ```
-
-## 🔧 Prerequisites
-
-- Docker Desktop
-- VSCode (recommended)
-- Git (optional)
-
-## 📖 Additional Resources
-
-- [N8N Official Documentation](https://docs.n8n.io/)
-- [Docker Documentation](https://docs.docker.com/)
-- [VSCode Documentation](https://code.visualstudio.com/docs)
 
 ## 🤝 Contributing
 
