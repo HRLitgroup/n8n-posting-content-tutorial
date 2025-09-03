@@ -11,7 +11,7 @@ The Automate Posting Content project was developed to streamline the process of 
 - **Docker**: [Docker Doc](https://docs.docker.com/get-started/docker-overview/)
 - **VSCode**
 - **Credentials and Access Token**
-## 📚 Documentation Structure
+## Setup Guide
 
 ### 1. [Setup](./01-setup/)
 
