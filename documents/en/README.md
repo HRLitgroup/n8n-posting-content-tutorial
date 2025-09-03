@@ -13,23 +13,28 @@ The Automate Posting Content project was developed to streamline the process of 
 - **Credentials and Access Token**
 ## Setup Guide
 
-### 1. [Setup](./01-setup/)
+To complete the project, we need to go through two main phases:
+### Phase 1: Set up the environment and install n8n.
+
+#### 1. [Setup](./01-setup/)
 
 - [Install Docker Desktop](./01-setup/01-docker-desktop.md)
 
-### 2. [Development Environment](./02-vscode/)
+#### 2. [Development Environment](./02-vscode/)
 
 - [Install VSCode](./02-vscode/01-install-vscode.md)
 
-### 3. [N8N Setup](./03-n8n-setup/)
+#### 3. [N8N Setup](./03-n8n-setup/)
 
 - [Clone and Set up N8N](./03-n8n-setup/01-clone-setup-n8n.md) - Complete setup including account creation and activation
 
-### 4. [Authentication](./04-authentication/)
+### Phase 2: Build the workflow using n8n.
+
+#### 4. [Authentication](./04-authentication/)
 
 - [Get Access Token](./04-authentication/get-access-token.md)
 
-### 5. [Workflows](./05-workflows/)
+#### 5. [Workflows](./05-workflows/)
 
 - [Create N8N Workflow](./05-workflows/01-create-n8n-workflow.md)
 
