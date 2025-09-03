@@ -14,7 +14,7 @@ The Automate Posting Content project was developed to streamline the process of 
 ## Setup Guide
 
 To complete the project, we need to go through two main phases:
-### Phase 1: Set up the environment and install n8n.
+### Phase 1: Set up the environment
 
 #### 1. [Setup](./01-setup/)
 
@@ -24,15 +24,17 @@ To complete the project, we need to go through two main phases:
 
 - [Install VSCode](./02-vscode/01-install-vscode.md)
 
+### Phase 2: Setup n8n and access token
+
 #### 3. [N8N Setup](./03-n8n-setup/)
 
 - [Clone and Set up N8N](./03-n8n-setup/01-clone-setup-n8n.md) - Complete setup including account creation and activation
 
-### Phase 2: Build the workflow using n8n.
-
 #### 4. [Authentication](./04-authentication/)
 
 - [Get Access Token](./04-authentication/get-access-token.md)
+
+### Phase 3: Build the workflow using n8n.
 
 #### 5. [Workflows](./05-workflows/)
 
