@@ -40,24 +40,6 @@ To complete the project, we need to go through two main phases:
 
 - [Create N8N Workflow](./05-workflows/01-create-n8n-workflow.md)
 
-## 🚀 Quick Start
-
-1. **Install Prerequisites**
-
-   - [Install Docker Desktop](./01-setup/01-docker-desktop.md)
-   - [Install VSCode](./02-vscode/01-install-vscode.md)
-
-2. **Set up N8N**
-
-   - [Clone and Set up N8N](./03-n8n-setup/01-clone-setup-n8n.md)
-
-3. **Configure Authentication**
-
-   - [Get Access Token](./04-authentication/get-access-token.md)
-
-4. **Create Workflows**
-   - [Create N8N Workflow](./05-workflows/01-create-n8n-workflow.md)
-
 ## 📁 Project Structure
 
 ```
