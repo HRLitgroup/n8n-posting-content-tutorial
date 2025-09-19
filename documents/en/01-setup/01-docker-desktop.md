@@ -20,7 +20,7 @@ Download Docker Desktop from [here](https://www.docker.com/get-started/).
 
 ### 3. Verify Installation
 
-Check that `docker` and `docker-compose` are active by running:
+Check that `docker` and `docker-compose` are active by running in Terminal:
 
 ```shell
 docker -v && docker-compose -v
