@@ -13,6 +13,7 @@
 | 2      | Tài khoản Google Drive   | Truy cập tệp hình ảnh      |
 | 3      | Tài khoản Facebook Graph | Đăng lên Facebook          |
 | 4      | Tài khoản LinkedIn       | Đăng lên LinkedIn          |
+| 5      | Wordpress                | Đăng lên Wordpress         |
 
 ![create_credentials](../../../assets/workflows/credentials/create_credential.png)
 
@@ -47,6 +48,24 @@ Sau khi xác minh, bạn sẽ thấy thông báo thành công màu xanh lá như
 ## Tài Khoản LinkedIn
 
 ![linkedin](../../../assets/workflows/credentials/linkedin/credential_linkedin_connect.png)
+
+## Tài Khoản Wordpress
+
+### Bước 1: Truy cập hồ sơ người dùng admin của bạn tại [WP Admin](https://litgroup.io/wp-admin/profile.php)
+
+![wp credentials](../../../assets/workflows/credentials/wordpress/wp-create-credentrials.png)
+
+### Bước 2: Truy cập n8n -> credentials -> wordpress account
+
+![n8n wp credential](../../../assets/workflows/credentials/wordpress/wp-connect-n8n.png)
+
+Điền thông tin:
+
+- Username: id người dùng dùng để đăng nhập wordpress
+- Password: mật khẩu ứng dụng hồ sơ người dùng tôi đã nói bạn lưu ở bước 1
+- Wordpress URL: vị trí để truy cập trang web của bạn
+
+### Bước 3: Xác minh thông tin xác thực đã kết nối bằng cách nhấp nút **Test**
 
 ---
 

@@ -14,15 +14,19 @@ Trước khi bắt đầu, hãy xem tổng quan quy trình để hiểu cấu tr
 
 ## Tổng Quan Các Bước Quy Trình
 
-| Bước | Hành Động                 | Mục Đích                                        | Nền Tảng           |
-| ---- | ------------------------- | ----------------------------------------------- | ------------------ |
-| 1    | Tạo Quy Trình             | Khởi tạo dự án quy trình mới                    | n8n                |
-| 2    | Kích Hoạt Thủ Công        | Bắt đầu thực thi quy trình                      | n8n                |
-| 3    | Lấy Dữ Liệu Google Sheets | Lấy nội dung có trạng thái 'ready'              | Google Sheets      |
-| 4    | Tải Xuống Hình Ảnh        | Chuyển đổi URL hình ảnh sang định dạng nhị phân | Google Drive       |
-| 5    | Đăng Lên LinkedIn         | Chia sẻ nội dung trên LinkedIn                  | LinkedIn           |
-| 6    | Đăng Lên Facebook         | Chia sẻ nội dung trên Facebook                  | Facebook Graph API |
-| 7    | Cập Nhật Trạng Thái Sheet | Đánh dấu nội dung đã đăng và tăng bộ đếm        | Google Sheets      |
+| Bước | Hành Động                 | Mục Đích                                         | Nền Tảng           |
+| ---- | ------------------------- | ------------------------------------------------ | ------------------ |
+| 1    | Tạo Quy Trình             | Khởi tạo dự án quy trình mới                     | n8n                |
+| 2    | Kích Hoạt Thủ Công        | Bắt đầu thực thi quy trình                       | n8n                |
+| 3    | Lấy Dữ Liệu Google Sheets | Lấy nội dung có trạng thái 'ready'               | Google Sheets      |
+| 4    | Tải Xuống Hình Ảnh        | Chuyển đổi URL hình ảnh sang định dạng nhị phân  | Google Drive       |
+| 5    | Đăng Lên LinkedIn         | Chia sẻ nội dung trên LinkedIn                   | LinkedIn           |
+| 6    | Đăng Lên Facebook         | Chia sẻ nội dung trên Facebook                   | Facebook Graph API |
+| 7    | Tạo Bài Đăng WordPress    | Tải lên bài đăng không có hình ảnh lên WordPress | WordPress          |
+| 8    | Lấy Hình Ảnh cho WP       | Tải xuống hình ảnh cho WordPress                 | Google Drive       |
+| 9    | Tải Lên Media lên WP      | Tải lên hình ảnh lên WordPress                   | WordPress          |
+| 10   | Cập Nhật Media vào Post   | Liên kết media đã tải lên với bài đăng WordPress | WordPress          |
+| 11   | Cập Nhật Trạng Thái Sheet | Đánh dấu nội dung đã đăng và tăng bộ đếm         | Google Sheets      |
 
 ## Bước 1
 
@@ -116,13 +120,88 @@ Làm theo hướng dẫn bên dưới (nhớ kết nối node này với node Go
 7. Kết quả thành công hoặc thất bại sẽ xuất hiện ở bên phải
    ![step6.2](../../../assets/workflows/steps/step6.2.png)
 
-## Bước 7
+# Lưu ý: Từ bước 7 ~ 10, vui lòng ghi nhớ tên node vì nó sẽ được tham chiếu trong các trường node con khi tái sử dụng sau này
+
+## Bước 7: Tải lên bài đăng không có hình ảnh vào wordpress
+
+Tìm node **Create a post**, bạn cũng có thể thay đổi tên của node - chỉ cần nhớ tên của node
+Trong trường hợp của tôi, tôi sẽ giữ node này với tên **Create a post**
+
+![step7.1](../../../assets/workflows/steps/step7.1.png)
+
+## Bước 8: Tạo node để lấy hình ảnh cho wordpress
+
+Lặp lại [Bước 4](#bước-4) để tạo node tải xuống tệp mới, nhưng nhớ lần này chúng ta thay đổi tên node thành **get_images_wp**
+
+![step8.1](../../../assets/workflows/steps/step8.1.png)
+
+## Bước 9: Tải lên hình ảnh lên wordpress
+
+Tìm và sử dụng node **HTTP Request** sau đó đổi tên thành **Upload media to WP**
+
+![step9.1](../../../assets/workflows/steps/step9.1.png)
+
+Cấu hình giống như hình, chỉ cần lưu ý về URL. Cú pháp của URL sẽ là
+
+```code
+${your-url-wordpress} + '/wp-json/wp/v2/media'
+```
+
+Trong trường hợp của tôi: `https://litgroup.io/wp-json/wp/v2/media`
+
+![step9.2](../../../assets/workflows/steps/step9.2.png)
+
+- Tham số Header:
+
+```code
+[
+   {
+      name: 'content-disposition',
+      value: `attachment; filename={{ $binary.data.fileName }}`
+   },
+   {
+      name: 'content-type',
+      value: `{{ $binary.data.mimeType }}`
+   }
+]
+```
+
+## Bước 10: Cập nhật media vào Post WP
+
+Tìm và sử dụng node **HTTP Request** sau đó đổi tên thành **Update media to Post WP**
+
+![step10.1](../../../assets/workflows/steps/step10.1.png)
+
+Cấu hình giống như hình, chỉ cần lưu ý về URL. Cú pháp của URL sẽ là
+
+```code
+${your-url-wordpress} + '/wp-json/wp/v2/posts/' + ${posted_id}
+```
+
+Trong trường hợp của tôi: `https://litgroup.io/wp-json/wp/v2/posts/{{ $('Create a post').item.json.id }}`
+
+![step10.2](../../../assets/workflows/steps/step10.2.png)
+
+- Tham số Header:
+
+```code
+[
+   {
+      name: 'featured_media',
+      value: `{{ $('Upload media to WP').item.json.id }}`
+   },
+]
+```
+
+Lưu ý: **\$('Create a post')** và **\$('Upload media to WP')** là tên của các node ở [bước 7](#bước-7-tải-lên-bài-đăng-không-có-hình-ảnh-vào-wordpress) và [bước 9](#bước-9-tải-lên-hình-ảnh-lên-wordpress)
+
+## Bước 11
 
 Nhấp vào nút +, tìm kiếm 'Google Sheets', và chọn nó.
 Chúng ta sẽ sử dụng hành động 'Update row in sheet' để cập nhật trạng thái thành 'posted' và tăng posted_time lên 1.
-![step7.1](../../../assets/workflows/steps/step7.1.png)
+![step12.1](../../../assets/workflows/steps/step12.1.png)
 
-Làm theo hướng dẫn bên dưới (nhớ kết nối node này với cả node LinkedIn và Facebook từ Bước 5 & 6):
+Làm theo hướng dẫn bên dưới (nhớ kết nối node này với cả node LinkedIn, Facebook và Wordpress từ Bước 5, 6 & 10):
 
 1. Chọn kết nối thông tin xác thực 'Google Sheets account' của bạn
 2. Cấu hình các trường:
@@ -133,12 +212,16 @@ Làm theo hướng dẫn bên dưới (nhớ kết nối node này với cả no
    - Column to match on: Chọn trường 'no'
 3. Trong trường 'Value to Update':
    - Kéo và thả trường 'no' vào trường **no (using to match)**
-     ![step7.2](../../../assets/workflows/steps/step7.2.png)
+     ![step12.2](../../../assets/workflows/steps/step12.2.png)
    - Trong trường status, đặt giá trị thành 'posted'
    - Trong trường posted_time, kéo và thả 'posted_time' vào giá trị của posted_time ở giữa (xem hình để biết chi tiết), sau đó thêm `+ 1` trước cuối `}}`
-     ![step7.3](../../../assets/workflows/steps/step7.3.png)
+     ![step12.3](../../../assets/workflows/steps/step12.3.png)
 4. Nhấp vào 'Execute Step'
 5. Kết quả thành công hoặc thất bại sẽ xuất hiện ở bên phải
+
+---
+
+# Tham khảo tạo kết nối N8N cho Wordpress [tại đây](https://www.youtube.com/watch?v=xioMvEWt-NE)
 
 ---
 

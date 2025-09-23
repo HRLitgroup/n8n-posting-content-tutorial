@@ -22,7 +22,11 @@ Before we begin, let's look at the workflow overview to understand its structure
 | 4    | Download Images        | Convert image URLs to binary format          | Google Drive       |
 | 5    | Post to LinkedIn       | Share content on LinkedIn                    | LinkedIn           |
 | 6    | Post to Facebook       | Share content on Facebook                    | Facebook Graph API |
-| 7    | Update Sheet Status    | Mark content as posted and increment counter | Google Sheets      |
+| 7    | Create WordPress Post  | Upload post without image to WordPress       | WordPress          |
+| 8    | Get Images for WP      | Download images for WordPress                | Google Drive       |
+| 9    | Upload Media to WP     | Upload images to WordPress                   | WordPress          |
+| 10   | Update Media to Post   | Link uploaded media to WordPress post        | WordPress          |
+| 11   | Update Sheet Status    | Mark content as posted and increment counter | Google Sheets      |
 
 ## Step 1
 
