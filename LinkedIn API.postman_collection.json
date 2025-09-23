@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "861d36c3-703b-4132-9214-40750dfff2c3",
+		"name": "LinkedIn API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11380137",
+		"_collection_link": "https://www.postman.com/solar-escape-662005/linkedin/collection/2bwhkaz/linkedin-api?action=share&source=collection_link&creator=11380137"
+	},
+	"item": [
+		{
+			"name": "3. GET Your User Info with Access Token Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.linkedin.com/v2/me?oauth2_access_token=",
+					"protocol": "https",
+					"host": [
+						"api",
+						"linkedin",
+						"com"
+					],
+					"path": [
+						"v2",
+						"me"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json",
+							"disabled": true
+						},
+						{
+							"key": "oauth2_access_token",
+							"value": "",
+							"description": "Your access token from 2."
+						}
+					]
+				},
+				"description": "In this example, you will use your access token to fetch your LinkedIn user information."
+			},
+			"response": []
+		},
+		{
+			"name": "1. LinkedIn Authorization Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id&scope=r_liteprofile&state=123&redirect_uri",
+					"protocol": "https",
+					"host": [
+						"www",
+						"linkedin",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"v2",
+						"authorization"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "",
+							"description": "Your LinkedIn Client ID"
+						},
+						{
+							"key": "scope",
+							"value": "r_liteprofile"
+						},
+						{
+							"key": "state",
+							"value": "123"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"description": "Your redirect URL"
+						}
+					]
+				},
+				"description": "This request will prompt you to sign in with LinkedIn and then generate an access token."
+			},
+			"response": []
+		},
+		{
+			"name": "2. POST Request for Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.linkedin.com/oauth/v2/accessToken\n?grant_type=authorization_code&client_id=&client_secret=&code=AQT63_MgO...&redirect_uri=",
+					"protocol": "https",
+					"host": [
+						"www",
+						"linkedin",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"v2",
+						"accessToken\n"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "client_id",
+							"value": "",
+							"description": "LinkedIn app Client ID"
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"description": "LinkedIn app Client Secret"
+						},
+						{
+							"key": "code",
+							"value": "AQT63_MgO...",
+							"description": "Your authorization token from 1."
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"description": "Your callback URL"
+						}
+					]
+				},
+				"description": "In this step, you will exchange your authorization token for a LinkedIn access token."
+			},
+			"response": []
+		},
+		{
+			"name": "3. GET Your User Info with Access Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.linkedin.com/v2/me?oauth2_access_token=",
+					"protocol": "https",
+					"host": [
+						"api",
+						"linkedin",
+						"com"
+					],
+					"path": [
+						"v2",
+						"me"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json",
+							"disabled": true
+						},
+						{
+							"key": "oauth2_access_token",
+							"value": "",
+							"description": "Your access token from 2."
+						}
+					]
+				},
+				"description": "In this example, you will use your access token to fetch your LinkedIn user information."
+			},
+			"response": []
+		}
+	]
+}

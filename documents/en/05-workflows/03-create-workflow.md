@@ -140,6 +140,8 @@ Follow the guide below (remember to connect this node with both the LinkedIn and
 4. Click on 'Execute Step'
 5. The success or failure result will appear on the right side
 
+## Reference create for Wordpress [here](https://www.youtube.com/watch?v=xioMvEWt-NE)
+
 ---
 
 **Previous**: [Create Credentials](./02-create-credentials.md)  

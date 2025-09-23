@@ -13,31 +13,11 @@
       "type": "n8n-nodes-base.linkedIn",
       "typeVersion": 1,
       "position": [
-        736,
-        -160
+        512,
+        -224
       ],
       "id": "416b5f9f-da84-4ff1-8b35-498d2ed87e69",
       "name": "post_as_personal",
-      "credentials": {
-        "linkedInOAuth2Api": {
-          "id": "xOpDBUAEVUUuWe2m",
-          "name": "LinkedIn account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "postAs": "organization",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.linkedIn",
-      "typeVersion": 1,
-      "position": [
-        -1200,
-        352
-      ],
-      "id": "5799a6fb-1e58-45b7-8e8a-1b13f070c013",
-      "name": "post_as_organization",
       "credentials": {
         "linkedInOAuth2Api": {
           "id": "xOpDBUAEVUUuWe2m",
@@ -50,8 +30,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        0,
-        0
+        -160,
+        16
       ],
       "id": "8ae39da0-42ee-4d66-9b1d-414328e4010b",
       "name": "execute"
@@ -85,15 +65,15 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        208,
-        0
+        48,
+        16
       ],
       "id": "0534bd20-8ed9-4abc-a40a-25ad71991734",
       "name": "get_contents",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "hiJ7gqVXT0mj9gik",
-          "name": "Google Sheets account 2"
+          "name": "Google Sheets account"
         }
       }
     },
@@ -110,8 +90,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        448,
-        0
+        288,
+        -96
       ],
       "id": "fec4cd00-1ee3-4871-88b0-81c87a4ef071",
       "name": "get_images",
@@ -144,8 +124,8 @@
       "type": "n8n-nodes-base.facebookGraphApi",
       "typeVersion": 1,
       "position": [
-        736,
-        144
+        512,
+        -32
       ],
       "id": "421e7ca8-9916-412e-9a66-e53c29eb0219",
       "name": "post_fb",
@@ -155,19 +135,6 @@
           "name": "Facebook Graph account"
         }
       }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -1200,
-        192
-      ],
-      "id": "bde75132-4915-477e-bd61-2e59dc07648a",
-      "name": "HTTP Request"
     },
     {
       "parameters": {
@@ -189,9 +156,9 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "no": "={{ $('get_images').item.json.no }}",
+            "no": "={{ $('get_contents').item.json.no }}",
             "status": "posted",
-            "posted_time": "={{ $('get_images').item.json.posted_time + 1 }}"
+            "posted_time": "={{ $('get_contents').item.json.posted_time + 1 }}"
           },
           "matchingColumns": [
             "no"
@@ -272,15 +239,138 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1040,
-        -16
+        1104,
+        -32
       ],
       "id": "4968723f-85a5-446c-af36-509a93acd377",
       "name": "update_status",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "hiJ7gqVXT0mj9gik",
-          "name": "Google Sheets account 2"
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "title": "={{ $json.title }}",
+        "additionalFields": {
+          "authorId": 1,
+          "content": "={{ $json.content }}",
+          "status": "draft",
+          "categories": [
+            65
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        304,
+        176
+      ],
+      "id": "c0545dd8-2634-40bf-b6bb-2d96f28f8da6",
+      "name": "Create a post",
+      "credentials": {
+        "wordpressApi": {
+          "id": "wOypdUufdR6CpK5F",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://litgroup.io/wp-json/wp/v2/media",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "content-disposition",
+              "value": "=attachment; filename={{ $binary.data.fileName }}"
+            },
+            {
+              "name": "content-type",
+              "value": "={{ $binary.data.mimeType }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        176
+      ],
+      "id": "9e053d17-8f79-43ff-a2c1-c4943d704cd4",
+      "name": "Upload media to WP",
+      "credentials": {
+        "wordpressApi": {
+          "id": "wOypdUufdR6CpK5F",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://litgroup.io/wp-json/wp/v2/posts/{{ $('Create a post').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wordpressApi",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "featured_media",
+              "value": "={{ $('Upload media to WP').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        912,
+        176
+      ],
+      "id": "6a9e839d-abe4-4789-afbf-461556a2a60f",
+      "name": "Update media to Post WP",
+      "credentials": {
+        "wordpressApi": {
+          "id": "wOypdUufdR6CpK5F",
+          "name": "Wordpress account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('get_contents').item.json.image }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        512,
+        176
+      ],
+      "id": "82db7851-0f12-4193-86e9-b270ca09d656",
+      "name": "get_images_wp",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cxuVdnDYf5rZRUgb",
+          "name": "Google Drive account"
         }
       }
     }
@@ -301,6 +391,11 @@
     "get_contents": {
       "main": [
         [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          },
           {
             "node": "get_images",
             "type": "main",
@@ -346,13 +441,57 @@
           }
         ]
       ]
+    },
+    "Create a post": {
+      "main": [
+        [
+          {
+            "node": "get_images_wp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload media to WP": {
+      "main": [
+        [
+          {
+            "node": "Update media to Post WP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_images_wp": {
+      "main": [
+        [
+          {
+            "node": "Upload media to WP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update media to Post WP": {
+      "main": [
+        [
+          {
+            "node": "update_status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "240babe5-9a1b-4398-be31-7e2e20010f73",
+  "versionId": "4f2d2618-2a04-4464-81a4-af27f1b1ec65",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9ec2c5ff0310d4f9d332c2a62e68f56a40ed0599970e5ab96692924355a072c9"
