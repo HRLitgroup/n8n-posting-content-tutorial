@@ -13,6 +13,7 @@
 | 2     | Google Drive account   | Access to image files      |
 | 3     | Facebook Graph account | Post to Facebook           |
 | 4     | LinkedIn account       | Post to LinkedIn           |
+| 5     | Wordpress              | Post to Wordpress          |
 
 ![create_credentials](../../../assets/workflows/credentials/create_credential.png)
 
@@ -47,6 +48,23 @@ After verification, you'll see a green success message like this. (Repeat the sa
 ## LinkedIn Account
 
 ![linkedin](../../../assets/workflows/credentials/linkedin/credential_linkedin_connect.png)
+
+## Wordpress Account
+
+### Step 1: Access your admin user profile at [WP Admin](https://litgroup.io/wp-admin/profile.php)
+
+![wp credentials](../../../assets/workflows/credentials/wordpress/wp-create-credentrials.png)
+
+### Step 2: Access n8n -> credentials -> wordpress account
+
+![n8n wp credential](../../../assets/workflows/credentials/wordpress/wp-connect-n8n.png)
+
+Fill out: 
+- Username: the user id use for login to wordpress
+- Password: the user profile application password I tell you saved in step 1
+- Wordpress URL: location to access your site
+
+### Step 3: Verify credentials connected by click button **Test**
 
 ---
 
